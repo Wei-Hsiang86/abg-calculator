@@ -7,9 +7,9 @@ function calculate() {
   const Cl = parseInt(document.getElementById("Cl").value, 10);
   const elementResult = document.getElementById("result");
 
-  if (isNaN(pH) || isNaN(PaO2) || isNaN(PaCO2) || isNaN(HCO3) || isNaN(Na) || isNaN(Cl)) {
+  if (isNaN(pH) || isNaN(PaO2) || isNaN(PaCO2) || isNaN(HCO3)) {
     elementResult.style.color = "red"
-    elementResult.innerText = `請輸入數字`
+    elementResult.innerText = `請輸入數字，或是欄位尚未填寫完全`
     return
   }
 
