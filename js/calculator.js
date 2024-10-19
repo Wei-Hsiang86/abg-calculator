@@ -23,6 +23,7 @@ function calculate() {
     if (pH > 7.7 || pH < 6.6) {
       elementResult.style.color = "red";
       elementResult.innerText = `別算了，快去看看患者生命徵象是否穩定!!!`;
+      return
     }
 
     if (
@@ -35,11 +36,13 @@ function calculate() {
     ) {
       PaO2 > 80 ? elementResult.style.color = "green" : elementResult.style.color = "red";
       elementResult.innerText = `患者目前血液酸鹼值在正常值內，${bloodO2}`;
+      return
     } else if (pH <= 7.4) {
       elementResult.style.color = "red";
 
       while (PaCO2 < 40 && HCO3 > 24) {
         elementResult.innerText = `請檢察輸入是否有誤，若有誤請重新輸入PaCO3, HCO3`;
+        return
       }
 
       if (PaCO2 > 40) {
@@ -51,16 +54,21 @@ function calculate() {
 
           if (HCO3 > HCO3Comp + 3) {
             elementResult.innerText = `患者目前為，急性呼吸酸併代謝鹼，${bloodO2}`;
+            return
           } else if (HCO3 < HCO3Comp - 3) {
             elementResult.innerText = `患者目前為，急性呼吸酸併代謝酸，${bloodO2}`;
+            return
           } else if (HCO3 <= HCO3Comp + 3 && HCO3 >= HCO3Comp - 3) {
             if (pH < 7.35) {
               elementResult.innerText = `患者目前為，急性呼吸酸併代謝不完全代償，${bloodO2}`;
+              return
             } else {
               elementResult.innerText = `患者目前為，急性呼吸酸併代謝完全代償，${bloodO2}`;
+              return
             }
           } else {
             elementResult.innerText = `請檢察輸入是否有誤`;
+            return
           }
         } else {
           // progression < 0.3
@@ -68,16 +76,21 @@ function calculate() {
 
           if (HCO3 > HCO3Comp + 3) {
             elementResult.innerText = `患者目前為，慢性呼吸酸併代謝鹼，${bloodO2}`;
+            return
           } else if (HCO3 < HCO3Comp - 3) {
             elementResult.innerText = `患者目前為，慢性呼吸酸併代謝酸，${bloodO2}`;
+            return
           } else if (HCO3 <= HCO3Comp + 3 && HCO3 >= HCO3Comp - 3) {
             if (pH < 7.35) {
               elementResult.innerText = `患者目前為，慢性呼吸酸併代謝不完全代償，${bloodO2}`;
+              return
             } else {
               elementResult.innerText = `患者目前為，慢性呼吸酸併代謝完全代償，${bloodO2}`;
+              return
             }
           } else {
             elementResult.innerText = `請檢察輸入是否有誤`;
+            return
           }
         }
       } else {
@@ -94,23 +107,30 @@ function calculate() {
             agResult = `陰離子間隙為${ag}，高氯性代謝性酸中毒`;
           } else {
             elementResult.innerText = `請檢察輸入是否有誤，若有誤請重新輸入Na+,Cl-`;
+            return
           }
 
           if (PaCO2 > PaCO2Comp + 5) {
             elementResult.innerText = `患者目前${agResult}，代謝酸併呼吸酸，${bloodO2}`;
+            return
           } else if (PaCO2 < PaCO2Comp - 5) {
             elementResult.innerText = `患者目前${agResult}，代謝酸併呼吸鹼，${bloodO2}`;
+            return
           } else if (PaCO2 <= PaCO2Comp + 5 && PaCO2 >= PaCO2Comp - 5) {
             if (pH < 7.35) {
               elementResult.innerText = `患者目前${agResult}，代謝酸併呼吸不完全代償，${bloodO2}`;
+              return
             } else {
               elementResult.innerText = `患者目前${agResult}，代謝酸併呼吸完全代償，${bloodO2}`;
+              return
             }
           } else {
             elementResult.innerText = `請檢察輸入是否有誤`;
+            return
           }
         } else {
           elementResult.innerText = `請檢察輸入是否有誤`;
+          return
         }
       }
     } else {
@@ -126,35 +146,46 @@ function calculate() {
 
           if (HCO3 > HCO3Comp + 3) {
             elementResult.innerText = `患者目前為，急性呼吸鹼併代謝鹼，${bloodO2}`;
+            return
           } else if (HCO3 < HCO3Comp - 3) {
             elementResult.innerText = `患者目前為，急性呼吸鹼併代謝酸，${bloodO2}`;
+            return
           } else if (HCO3 <= HCO3Comp + 3 && HCO3 >= HCO3Comp - 3) {
             if (pH > 7.45) {
               elementResult.innerText = `患者目前為，急性呼吸鹼併代謝不完全代償，${bloodO2}`;
+              return
             } else {
               elementResult.innerText = `患者目前為，急性呼吸鹼併代謝完全代償，${bloodO2}`;
+              return
             }
           } else {
             elementResult.innerText = `請檢察輸入是否有誤`;
+            return
           }
         } else if (progression < 0.3) {
           const HCO3Comp = 24 - 0.4 * (40 - PaCO2);
 
           if (HCO3 > HCO3Comp + 3) {
             elementResult.innerText = `患者目前為，慢性呼吸鹼併代謝鹼，${bloodO2}`;
+            return
           } else if (HCO3 < HCO3Comp - 3) {
             elementResult.innerText = `患者目前為，慢性呼吸鹼併代謝酸，${bloodO2}`;
+            return
           } else if (HCO3 <= HCO3Comp + 3 && HCO3 >= HCO3Comp - 3) {
             if (pH > 7.45) {
               elementResult.innerText = `患者目前為，慢性呼吸鹼併代謝不完全代償，${bloodO2}`;
+              return
             } else {
               elementResult.innerText = `患者目前為，慢性呼吸鹼併代謝完全代償，${bloodO2}`;
+              return
             }
           } else {
             elementResult.innerText = `請檢察輸入是否有誤`;
+            return
           }
         } else {
           elementResult.innerText = `請檢察輸入是否有誤`;
+          return
         }
       } else if (PaCO2 > 40) {
         if (HCO3 >= 24) {
@@ -162,26 +193,34 @@ function calculate() {
 
           if (PaCO2 > PaCO2Comp + 5) {
             elementResult.innerText = `患者目前為，代謝鹼併呼吸酸，${bloodO2}`;
+            return
           } else if (PaCO2 < PaCO2Comp - 5) {
             elementResult.innerText = `患者目前為，代謝鹼併呼吸鹼，${bloodO2}`;
+            return
           } else if (PaCO2 <= PaCO2Comp + 5 && PaCO2 >= PaCO2Comp - 5) {
             if (pH > 7.45) {
               elementResult.innerText = `患者目前為，代謝鹼併呼吸不完全代償，${bloodO2}`;
+              return
             } else {
               elementResult.innerText = `患者目前為，代謝鹼併呼吸完全代償，${bloodO2}`;
+              return
             }
           } else {
             elementResult.innerText = `請檢察輸入是否有誤`;
+            return
           }
         } else {
           elementResult.innerText = `請檢察輸入是否有誤`;
+          return
         }
       } else {
         elementResult.innerText = `請檢察輸入是否有誤`;
+        return
       }
     }
   } catch (err) {
     console.log(err);
     elementResult.innerText = `發生錯誤：${err}`;
+    return
   }
 }
