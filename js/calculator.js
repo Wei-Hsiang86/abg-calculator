@@ -1,7 +1,3 @@
-function replaceClassName(element, oldClass, newClass) {
-  element.className = element.className.replace(new RegExp('\\s*' + oldClass + '\\s*', 'g'), ' ' + newClass + ' ');
-}
-
 function calculate() {
   const pH = parseFloat(document.getElementById("pH").value);
   const PaO2 = parseInt(document.getElementById("PaO2").value, 10);
