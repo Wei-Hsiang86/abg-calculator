@@ -7,6 +7,12 @@ function calculate() {
   const Cl = parseInt(document.getElementById("Cl").value, 10);
   const elementResult = document.getElementById("result");
 
+  if (isNaN(pH) || isNaN(PaO2) || isNaN(PaCO2) || isNaN(HCO3) || isNaN(Na) || isNaN(Cl)) {
+    elementResult.style.color = "red"
+    elementResult.innerText = `請輸入數字`
+    return
+  }
+
   try {
     // 計算氧合
     let bloodO2;
