@@ -57,7 +57,9 @@ function switchLan() {
 
   function setPlaceholders(elements, targetLang) {
     elements.forEach((element, index) => {
-      element.placeholder = `請輸入${langText[targetLang][index + 1]}`;
+      element.placeholder = `${
+        targetLang === "EN" ? "Please enter " : "請輸入"
+      }${langText[targetLang][index + 1]}`;
     });
   }
 
